@@ -2,14 +2,13 @@
 set -Eeuo pipefail
 
 echo "----- install prerequisite packages -----"
-export DEBIAN_FRONTEND=noninteractive
 if ! command -V sudo  ; then
     echo ":: Installing sudo"
     apt-get update
-    apt-get -y install sudo
+    DEBIAN_FRONTEND=noninteractive apt-get -y install sudo
 fi
 sudo apt-get update
-sudo apt-get -y install \
+sudo DEBIAN_FRONTEND=noninteractive apt-get -y install \
     bash \
     expect \
     curl \
