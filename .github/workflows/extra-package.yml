@@ -102,9 +102,8 @@ jobs:
           run: |
             set -e
             echo "::group::Install Prerequisites"
-              export DEBIAN_FRONTEND=noninteractive
               bin/install_prerequisites_ubuntu.sh
-              sudo apt-get install -y g++-aarch64-linux-gnu libc6-dev-arm64-cross
+              sudo DEBIAN_FRONTEND=noninteractive apt-get install -y g++-aarch64-linux-gnu libc6-dev-arm64-cross
               ./bin/export_cross_compile_env.sh
             echo "::endgroup::"
             echo "::group::Install Rust"
